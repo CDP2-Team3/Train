@@ -97,3 +97,46 @@ To get the average leave-one-person-out accuracy use:
  --respath evaluation/L2CS-mpiigaze  \
 ```
 This means the code will take the evaluation path and outputs the leave-one-out gaze accuracy to the *evaluation/L2CS-mpiigaze*.
+
+
+## Gaze360
+We provide the code for train and test MPIIGaze dataset with leave-one-person-out evaluation.
+
+### Prepare datasets
+* download datasets from Notion
+* Store the dataset to *datasets/Gaze360*.
+* It should be like
+```
+├─datasets/
+│  └─Gaze360/
+│      ├─Image/
+│      │  ├─test/
+│      │  ├─train/
+│      │  ├─unused/
+│      │  └─val/
+│      └─Label/
+├─l2cs/
+├─models/
+├─output/
+│    └─snapshots/
+├─train.py
+└─other files
+```
+
+### Install requirements.txt
+```
+ pip install -r requirements.txt
+```
+
+### Train
+```
+ python train.py \
+ --dataset gaze360 \
+ --snapshot output/snapshots \
+ --gpu 0 \
+ --num_epochs 50 \
+ --batch_size 16 \
+ --lr 0.00001 \
+ --alpha 1 \
+
+```
